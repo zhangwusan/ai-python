@@ -1,0 +1,36 @@
+name: Run Web Project
+
+on:
+  push:
+    branches:
+      - main  # Adjust as needed
+  pull_request:
+    branches:
+      - main  # Adjust as needed
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Adjust the Node.js version as needed
+
+      # Step 3: Navigate to the web project directory
+      - name: Navigate to Web Directory
+        run: cd website
+
+      # Step 4: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 5: Run the web project (e.g., start the development server or build)
+      - name: Run Web Project
+        run: npm run start  # Replace with your actual start/build command
